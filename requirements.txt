@@ -8,5 +8,5 @@ pickle4
 plotly
 os
 pycaret
-pandas-profiling
+ydata-profiling
 streamlit_pandas_profiling
