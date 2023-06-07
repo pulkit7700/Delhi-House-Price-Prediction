@@ -9,7 +9,7 @@ import joblib
 import os
 # import pandas_profiling
 # from streamlit_pandas_profiling import st_profile_report
-from pycaret.classification import setup, compare_models, pull, save_model
+# from pycaret.classification import setup, compare_models, pull, save_model
 
 # -- Making the Preprocessors
 
