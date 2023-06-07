@@ -6,7 +6,3 @@ scikit-learn
 bz2file
 pickle4
 plotly
-os
-pycaret
-ydata-profiling
-streamlit_pandas_profiling
