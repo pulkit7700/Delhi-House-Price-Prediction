@@ -9,7 +9,7 @@ import joblib
 import os
 import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
-from pycaret.classification import setup, compare_models, pull, save_model
+from pycaret.regression import setup, compare_models, pull, save_model
 
 # -- Making the Preprocessors
 
@@ -63,7 +63,7 @@ st.title("House Price Prediction Delhi :house:")
 
 selected = option_menu(
     menu_title=None,
-    options=['Predictior', 'Train your Own Model [Classification]'],
+    options=['Predictior', 'Train your Own Model [Regression]'],
     orientation='horizontal'
 )
 
@@ -91,7 +91,7 @@ if selected == 'Predictior':
     if st.button('Price Prediction', on_click=predict):
         predict()
 
-if selected == 'Train your Own Model [Classification]':
+if selected == 'Train your Own Model [Regression]':
     with st.sidebar:
         st.image('https://media.giphy.com/media/KeQf3wNoXaft4IhWcW/giphy.gif', width=230)
         st.title('AutoTrainML')
