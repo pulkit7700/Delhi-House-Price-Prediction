@@ -7,3 +7,6 @@ bz2file
 pickle4
 plotly
 ydata-profiling
+streamlit_pandas_profiling
+pycaret
+os

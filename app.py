@@ -7,9 +7,9 @@ import plotly.express as px
 from streamlit_option_menu import option_menu
 import joblib
 import os
-# import pandas_profiling
-# from streamlit_pandas_profiling import st_profile_report
-# from pycaret.classification import setup, compare_models, pull, save_model
+import ydata_profiling
+from streamlit_pandas_profiling import st_profile_report
+from pycaret.classification import setup, compare_models, pull, save_model
 
 # -- Making the Preprocessors
 
@@ -90,49 +90,49 @@ if selected == 'Predictior':
 
     st.button('Price Prediction', on_click=predict)
 
-# if selected == 'Train your Own Model [Classification]':
-#     with st.sidebar:
-#         st.image('https://media.giphy.com/media/KeQf3wNoXaft4IhWcW/giphy.gif', width=230)
-#         st.title('AutoTrainML')
-#         choice = st.radio("Navigation", ["Upload", 'Profiling', 'Training', 'Download'])
-#         st.info("This is Automated ML training model designed to automatically train models on any device")
+if selected == 'Train your Own Model [Classification]':
+    with st.sidebar:
+        st.image('https://media.giphy.com/media/KeQf3wNoXaft4IhWcW/giphy.gif', width=230)
+        st.title('AutoTrainML')
+        choice = st.radio("Navigation", ["Upload", 'Profiling', 'Training', 'Download'])
+        st.info("This is Automated ML training model designed to automatically train models on any device")
 
-#     if os.path.exists('Source_data.csv'):
-#         df2 = pd.read_csv("Source_data.csv", index_col=None)
+    if os.path.exists('Source_data.csv'):
+        df2 = pd.read_csv("Source_data.csv", index_col=None)
 
-#     if choice == 'Upload':
-#         st.title('Upload Your File for Modeling !!')
-#         file = st.file_uploader('Please Upload your File', accept_multiple_files=False)
-#         if file:
-#             df2 = pd.read_csv(file, index_col=None)
-#             df2.to_csv("Source_data.csv", index=None)
-#             st.dataframe(df2)
-
-
-#     if choice == 'Profiling':
-#         st.title("EDA")
-#         profile_report = df2.profile_report()
-#         st_profile_report(profile_report)
-
-#     if choice == 'Training':
-#         st.title('Machine Learning AutoTraining')
-#         target = st.selectbox("Select Your Target", df2.columns)
-#         if st.button("Train Model"):
-#             setup(df2, target=target)
-#             setup_df = pull()
-#             st.info("ML Settings")
-#             st.dataframe(setup_df)
-#             best_model = compare_models()
-#             compare_df = pull()
-#             st.info("This is the ML Model")
-#             st.dataframe(compare_df)
-#             best_model
-#             save_model(best_model, 'best_model')
+    if choice == 'Upload':
+        st.title('Upload Your File for Modeling !!')
+        file = st.file_uploader('Please Upload your File', accept_multiple_files=False)
+        if file:
+            df2 = pd.read_csv(file, index_col=None)
+            df2.to_csv("Source_data.csv", index=None)
+            st.dataframe(df2)
 
 
-#     if choice == 'Download':
-#         with open('best_model.pkl', 'rb') as f:
-#             st.download_button("Download the Model", f, "Trained_model.pkl")
+    if choice == 'Profiling':
+        st.title("EDA")
+        profile_report = df2.profile_report()
+        st_profile_report(profile_report)
+
+    if choice == 'Training':
+        st.title('Machine Learning AutoTraining')
+        target = st.selectbox("Select Your Target", df2.columns)
+        if st.button("Train Model"):
+            setup(df2, target=target)
+            setup_df = pull()
+            st.info("ML Settings")
+            st.dataframe(setup_df)
+            best_model = compare_models()
+            compare_df = pull()
+            st.info("This is the ML Model")
+            st.dataframe(compare_df)
+            best_model
+            save_model(best_model, 'best_model')
+
+
+    if choice == 'Download':
+        with open('best_model.pkl', 'rb') as f:
+            st.download_button("Download the Model", f, "Trained_model.pkl")
 
 
    
