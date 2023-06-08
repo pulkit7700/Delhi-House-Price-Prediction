@@ -6,3 +6,4 @@ scikit-learn
 bz2file
 pickle4
 plotly
+ydata-profiling
