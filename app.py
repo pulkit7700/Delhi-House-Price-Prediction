@@ -88,7 +88,8 @@ if selected == 'Predictior':
         st.success("The Price of the Property is {}".format(prediction))
         return prediction
 
-    st.button('Price Prediction', on_click=predict)
+    if st.button('Price Prediction', on_click=predict):
+        predict()
 
 if selected == 'Train your Own Model [Classification]':
     with st.sidebar:
